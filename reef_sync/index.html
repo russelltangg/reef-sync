@@ -9,14 +9,66 @@
     <script src="framework.js"></script>
     <style>
         .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-premium { background: rgba(8, 15, 30, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(6, 182, 212, 0.15); }
         ::-webkit-scrollbar { display: none; }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.15); } }
+        .bg-glow { animation: pulse-slow 8s infinite ease-in-out; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased" x-data="globalReefRouter()">
 
-    <div class="max-w-md mx-auto min-h-screen flex flex-col relative bg-gradient-to-b from-slate-900 via-slate-950 to-blue-950 pb-24 shadow-2xl">
+    <!-- CONTAINER INTERFACE -->
+    <div class="max-w-md mx-auto min-h-screen flex flex-col relative bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 pb-24 shadow-2xl overflow-hidden">
         
-        <header class="p-4 flex justify-between items-center border-b border-slate-800 sticky top-0 bg-slate-950/95 backdrop-blur-md z-50">
+        <!-- ================= LANDING PAGE SCREEN ================= -->
+        <div x-show="showLanding" class="absolute inset-0 z-50 flex flex-col justify-between p-6 bg-slate-950/95 transition-all duration-700 ease-in-out">
+            <div class="absolute top-1/4 -left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-[90px] bg-glow"></div>
+            <div class="absolute bottom-1/4 -right-10 w-72 h-72 bg-rose-500/10 rounded-full blur-[90px] bg-glow" style="animation-delay: 4s"></div>
+            
+            <div class="flex justify-between items-center relative z-10 pt-4">
+                <div class="flex items-center -space-x-1.5">
+                    <div class="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center shadow-md border border-white/20">
+                        <img src="image_0c1261.png" alt="UPM Logo" class="max-w-full max-h-full object-contain">
+                    </div>
+                    <div class="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center shadow-md border border-slate-200">
+                        <img src="image_0c0ee2.png" alt="RHB Logo" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                <span class="text-[10px] font-mono tracking-widest text-slate-500 uppercase bg-slate-900/80 px-2.5 py-1 rounded-full border border-slate-800">Node Cluster: UPM</span>
+            </div>
+
+            <div class="space-y-6 relative z-10 my-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/10 to-teal-500/10 px-4 py-1.5 rounded-full border border-cyan-500/20 shadow-inner">
+                    <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping"></span>
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-cyan-400 font-mono">Fintech × Conservation Protocol</span>
+                </div>
+                
+                <div class="space-y-3">
+                    <h1 class="text-4xl font-black tracking-tighter text-white">
+                        REEF_<span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400">SYNC</span>
+                    </h1>
+                    <p class="text-xs text-slate-400 max-w-xs mx-auto leading-relaxed">
+                        A decentralized multi-page cognitive ecosystem mapping routine varsity transactions into live coral preservation.
+                    </p>
+                </div>
+
+                <div class="glass-premium rounded-2xl p-4 max-w-xs mx-auto shadow-xl">
+                    <p class="text-[9px] text-cyan-500 font-mono tracking-widest uppercase">Engineered By</p>
+                    <h2 class="text-base font-black tracking-wider text-slate-200 mt-0.5">TEAM REEF-STORER</h2>
+                    <div class="w-12 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto mt-2 rounded-full"></div>
+                </div>
+            </div>
+
+            <div class="relative z-10 pb-6">
+                <button @click="showLanding = false" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-black text-xs tracking-widest uppercase py-4 rounded-xl transition duration-300 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 active:scale-[0.98]">
+                    Initialize Cluster Connection
+                </button>
+                <p class="text-[10px] text-center text-slate-600 mt-3 font-mono">Authorized for Hackathon Sandbox Presentation 2026</p>
+            </div>
+        </div>
+
+        <!-- ================= MAIN CORE APP MODULE ================= -->
+        <header class="p-4 flex justify-between items-center border-b border-slate-800 sticky top-0 bg-slate-950/95 backdrop-blur-md z-40">
             <div class="flex items-center gap-2.5">
                 <div class="flex items-center -space-x-2">
                     <div class="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center shadow-md relative z-20">
@@ -44,11 +96,14 @@
             </div>
         </header>
 
+        <!-- LIVE COMPONENT SLOT IFRAME ENGINE -->
         <main class="flex-1 w-full">
-            <iframe :src="currentPage" class="w-full h-[calc(100vh-145px)] border-none" id="appViewport"></iframe>
+            <!-- Added id="appViewport" and a static initial src pointing directly to your root file inside GitHub -->
+            <iframe src="insight-hub.html" class="w-full h-[calc(100vh-145px)] border-none" id="appViewport"></iframe>
         </main>
 
-        <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/95 border-t border-slate-900 px-4 py-4 flex justify-around items-center z-50">
+        <!-- MULTI-PAGE MASTER DOCK INTERFACE -->
+        <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/95 border-t border-slate-900 px-4 py-4 flex justify-around items-center z-40">
             <button @click="navigate('insight-hub.html')" class="flex flex-col items-center gap-1 text-xs" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 <span>Insights</span>
@@ -77,9 +132,21 @@
 
         function globalReefRouter() {
             return {
+                showLanding: true,
                 currentPage: 'insight-hub.html',
                 activeTab: 'insights',
                 varsityNode: 'UPM_NODE.LOCAL',
+                
+                // Initialize the watcher hook when component mounts
+                init() {
+                    this.$watch('currentPage', value => {
+                        const iframe = document.getElementById('appViewport');
+                        if (iframe) {
+                            iframe.src = value; // Forcefully injects the page value straight into DOM window context
+                        }
+                    });
+                },
+                
                 navigate(page) {
                     this.currentPage = page;
                     this.activeTab = page.includes('insight') ? 'insights' : 'fintech';

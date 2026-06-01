@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Standardized Relative Root Link -->
     <script src="framework.js"></script>
     <style>
         .glass-panel { background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); }
@@ -13,6 +14,7 @@
 </head>
 <body class="bg-transparent text-slate-100 p-4 space-y-5">
 
+    <!-- TEAM IDENTITY BANNER -->
     <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-blue-600 bg-gradient-to-r from-blue-950/20 to-transparent">
         <div class="flex justify-between items-center">
             <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest">Reef-Storer × RHB Impact Logic</h2>
@@ -21,6 +23,7 @@
         <p class="text-[11px] text-slate-400 mt-1">Transforming interview requirements gathered from environmental experts into scalable application features.</p>
     </div>
 
+    <!-- EXPERT INTERVIEW VIDEO COMPONENTS -->
     <div class="space-y-2">
         <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Expert Requirements Analysis</h3>
         <div class="grid grid-cols-2 gap-3">
@@ -43,6 +46,7 @@
         </div>
     </div>
 
+    <!-- INSIGHT TERMINATER STRATEGY LOG -->
     <div class="space-y-2.5" x-data="{
         insights: [
             { id: 1, role: 'Structural Diagnosis', desc: 'Students ignore marine issues because they lack a daily, low-friction channel to log environmental contributions.' },
@@ -57,10 +61,15 @@
         </template>
     </div>
 
+    <!-- TARGETED ACTION NODES -->
     <div class="glass-panel rounded-xl p-4 space-y-3" x-data="{
         sendPayload(score, plastic) {
-            dispatchSystemUpdate(0, plastic, score);
-            alert('Ledger Node Update: Action synced with UPM cluster database.');
+            if (typeof dispatchSystemUpdate === 'function') {
+                dispatchSystemUpdate(0, plastic, score);
+                alert('Ledger Node Update: Action synced with UPM cluster database.');
+            } else {
+                alert('Bridge Error: Parent linkage handshake pending.');
+            }
         }
     }">
         <div>

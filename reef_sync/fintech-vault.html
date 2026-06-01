@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Standardized Relative Root Link -->
     <script src="framework.js"></script>
     <style>
         .glass-panel { background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); }
@@ -19,11 +20,17 @@
         if (spareChange === 0) spareChange = 1.00;
         
         this.runningTotal += spareChange;
-        dispatchSystemUpdate(spareChange, 0, 3);
-        alert('RHB API Gateway: Transaction processed. Micro-donation fraction allocated to coral fund.');
+        
+        if (typeof dispatchSystemUpdate === 'function') {
+            dispatchSystemUpdate(spareChange, 0, 3);
+            alert('RHB API Gateway: Transaction processed. Micro-donation fraction allocated to coral fund.');
+        } else {
+            alert('Fintech Error: Parent cross-origin messaging tunnel inactive.');
+        }
     }
 }">
 
+    <!-- HIGH-AFFINITY CARD GRAPHIC WITH INTEGRATED LOGO ANCHORS -->
     <div class="w-full h-44 bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-900 rounded-2xl p-5 relative overflow-hidden shadow-xl border border-white/10">
         <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
         
@@ -33,6 +40,7 @@
                     <span class="text-[11px] font-black tracking-widest text-white/90 block">RHB OCEAN HARMONI</span>
                     <span class="text-[8px] px-1.5 py-0.5 bg-cyan-600 text-white font-bold tracking-wider rounded uppercase">UPM Edition</span>
                 </div>
+                <!-- Inline Embedded Miniature RHB Asset Identifier -->
                 <div class="w-7 h-7 bg-white rounded-md p-0.5 flex items-center justify-center shadow">
                     <img src="image_0c0ee2.png" alt="RHB Graphic Icon" class="max-w-full max-h-full object-contain">
                 </div>
@@ -50,6 +58,7 @@
         </div>
     </div>
 
+    <!-- SIMULATED TERMINAL CARD INTERFACE -->
     <div class="glass-panel rounded-xl p-4 space-y-3">
         <div>
             <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wide">Fintech Transaction Simulation Suite</h4>
