@@ -4,70 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .glass-panel { background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        ::-webkit-scrollbar { display: none; }
-    </style>
+    <style>::-webkit-scrollbar { display: none; }</style>
 </head>
-<body class="bg-transparent text-slate-100 p-4 space-y-5">
+<body class="bg-slate-950 text-slate-100 p-4 space-y-4 overflow-y-auto selection:bg-transparent">
 
-    <div class="w-full h-40 bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-900 rounded-2xl p-5 relative overflow-hidden shadow-xl border border-white/10">
-        <div class="flex flex-col justify-between h-full relative z-10">
-            <div class="flex justify-between items-start">
-                <div class="space-y-0.5">
-                    <span class="text-[11px] font-black tracking-widest text-white/90 block">RHB OCEAN HARMONI</span>
-                    <span class="text-[8px] px-1.5 py-0.5 bg-cyan-600 text-white font-bold tracking-wider rounded uppercase">UPM Edition</span>
-                </div>
-                <div class="w-7 h-7 bg-white rounded-md p-0.5 flex items-center justify-center shadow">
-                    <img src="./image_0c0ee2.png" alt="RHB Icon" class="max-w-full max-h-full object-contain">
-                </div>
-            </div>
+    <div class="w-full h-36 bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950 rounded-xl p-4 flex flex-col justify-between border border-slate-800 shadow-xl">
+        <div class="flex justify-between items-start">
             <div>
-                <p class="text-[9px] text-cyan-300 uppercase tracking-widest font-bold">Micro-Donation Volume Generated</p>
-                <h3 id="vaultBalance" class="text-2xl font-black text-white tracking-tight">RM 24.50</h3>
+                <span class="text-[10px] font-black tracking-widest text-slate-200 block">RHB OCEAN HARMONI</span>
+                <span class="text-[8px] px-1.5 py-0.5 bg-cyan-600 text-white font-bold rounded uppercase">UPM Pilot</span>
             </div>
-            <div class="flex justify-between items-center text-[10px] font-mono text-slate-400">
-                <span>•••• •••• •••• 2026</span>
-                <span class="text-[9px] text-white font-extrabold tracking-widest">VISA Debit-i</span>
-            </div>
+            <img src="./image_0c0ee2.png" alt="RHB" class="h-6 w-auto object-contain bg-white rounded p-0.5">
+        </div>
+        <div>
+            <p class="text-[8px] text-cyan-400 font-bold tracking-widest uppercase">Micro-Donation Value</p>
+            <h3 id="balDisplay" class="text-xl font-black text-white">RM 24.50</h3>
+        </div>
+        <div class="flex justify-between text-[9px] font-mono text-slate-500">
+            <span>•••• 2026</span>
+            <span class="font-bold text-slate-300">VISA Debit-i</span>
         </div>
     </div>
 
-    <div class="glass-panel rounded-xl p-4 space-y-3">
-        <div>
-            <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wide">Fintech Transaction Simulation Suite</h4>
-            <p class="text-[10px] text-slate-500">Simulate everyday campus spending to trace how spare change is automatically funneled into active reef restoration.</p>
-        </div>
-
+    <div class="bg-slate-900/40 rounded-xl p-3.5 border border-slate-900 space-y-2">
+        <h4 class="text-xs font-bold text-slate-200">Transaction Simulation Suite</h4>
         <div class="space-y-2">
-            <button onclick="executeVaultPayment(6.20, 0.80, 3)" class="w-full bg-slate-950/40 hover:bg-slate-950 p-3 rounded-xl border border-slate-900 flex justify-between items-center transition duration-200 cursor-pointer">
-                <div class="text-left">
-                    <h5 class="text-xs font-bold text-slate-300">UPM Central Cafeteria Meal</h5>
+            <button onclick="processTx(0.80, 3)" class="w-full bg-slate-950 p-2.5 rounded-lg border border-slate-900/80 flex justify-between items-center active:bg-slate-900 transition text-left cursor-pointer">
+                <div>
+                    <h5 class="text-[11px] font-bold text-slate-300">Cafeteria Meal</h5>
                     <p class="text-[9px] text-slate-500">Spent: RM 6.20</p>
                 </div>
-                <span class="text-xs font-bold text-emerald-400">+ RM 0.80 Round-Up</span>
+                <span class="text-[10px] font-bold text-emerald-400">+RM 0.80</span>
             </button>
-            
-            <button onclick="executeVaultPayment(18.50, 0.50, 4)" class="w-full bg-slate-950/40 hover:bg-slate-950 p-3 rounded-xl border border-slate-900 flex justify-between items-center transition duration-200 cursor-pointer">
-                <div class="text-left">
-                    <h5 class="text-xs font-bold text-slate-300">UPM Co-Op Textbook Purchase</h5>
+            <button onclick="processTx(0.50, 4)" class="w-full bg-slate-950 p-2.5 rounded-lg border border-slate-900/80 flex justify-between items-center active:bg-slate-900 transition text-left cursor-pointer">
+                <div>
+                    <h5 class="text-[11px] font-bold text-slate-300">Co-Op Book</h5>
                     <p class="text-[9px] text-slate-500">Spent: RM 18.50</p>
                 </div>
-                <span class="text-xs font-bold text-emerald-400">+ RM 0.50 Round-Up</span>
+                <span class="text-[10px] font-bold text-emerald-400">+RM 0.50</span>
             </button>
         </div>
     </div>
 
     <script>
-        let currentTotal = 24.50;
-        function executeVaultPayment(cost, change, scoreAward) {
-            currentTotal += change;
-            document.getElementById('vaultBalance').innerText = 'RM ' + currentTotal.toFixed(2);
-            
-            window.parent.postMessage({
-                type: 'REEF_SCORE_UPDATE',
-                score: scoreAward
-            }, '*');
+        let balance = 24.50;
+        function processTx(change, score) {
+            balance += change;
+            document.getElementById('balDisplay').innerText = 'RM ' + balance.toFixed(2);
+            window.parent.postMessage({ type: 'INCREMENT_SCORE', value: score }, '*');
         }
     </script>
 </body>
