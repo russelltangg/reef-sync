@@ -17,19 +17,33 @@
             <img src="./image_0c0ee2.png" alt="RHB" class="h-6 w-auto object-contain bg-white rounded p-0.5">
         </div>
         <div>
-            <p class="text-[8px] text-cyan-400 font-bold tracking-widest uppercase">Micro-Donation Volume</p>
+            <p class="text-[8px] text-cyan-400 font-bold tracking-widest uppercase">Micro-Donation Volume Generated</p>
             <h3 id="balDisplay" class="text-xl font-black text-white">RM 24.50</h3>
+        </div>
+        <div class="flex justify-between text-[9px] font-mono text-slate-500">
+            <span>•••• 2026</span>
+            <span class="font-bold text-slate-300">VISA Debit-i</span>
         </div>
     </div>
 
     <div class="bg-slate-900/40 rounded-xl p-3.5 border border-slate-900 space-y-2">
-        <h4 class="text-xs font-bold text-slate-200">Transaction Suite</h4>
-        <button onclick="processTx(0.80, 3)" class="w-full bg-slate-950 p-2.5 rounded-lg border border-slate-900 flex justify-between items-center active:bg-slate-900 transition text-left cursor-pointer">
-            <div>
-                <h5 class="text-[11px] font-bold text-slate-300">Cafeteria Meal Round-Up</h5>
-            </div>
-            <span class="text-[10px] font-bold text-emerald-400">+RM 0.80</span>
-        </button>
+        <h4 class="text-xs font-bold text-slate-200">Fintech Simulation Suite</h4>
+        <div class="space-y-2">
+            <button onclick="processTx(0.80, 3)" class="w-full bg-slate-950 p-2.5 rounded-lg border border-slate-900 flex justify-between items-center active:bg-slate-900 transition text-left cursor-pointer">
+                <div>
+                    <h5 class="text-[11px] font-bold text-slate-300">Cafeteria Meal Round-Up</h5>
+                    <p class="text-[9px] text-slate-500">Spent: RM 6.20</p>
+                </div>
+                <span class="text-[10px] font-bold text-emerald-400">+RM 0.80</span>
+            </button>
+            <button onclick="processTx(0.50, 4)" class="w-full bg-slate-950 p-2.5 rounded-lg border border-slate-900 flex justify-between items-center active:bg-slate-900 transition text-left cursor-pointer">
+                <div>
+                    <h5 class="text-[11px] font-bold text-slate-300">Co-Op Book Purchase</h5>
+                    <p class="text-[9px] text-slate-500">Spent: RM 18.50</p>
+                </div>
+                <span class="text-[10px] font-bold text-emerald-400">+RM 0.50</span>
+            </button>
+        </div>
     </div>
 
     <script>
