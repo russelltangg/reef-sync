@@ -6,9 +6,7 @@
     <title>Reef_Sync Platform v2 - Reef-Storer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="framework.js"></script>
     <style>
-        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .glass-premium { background: rgba(8, 15, 30, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(6, 182, 212, 0.15); }
         ::-webkit-scrollbar { display: none; }
         @keyframes pulse-slow { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.15); } }
@@ -17,11 +15,8 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased">
 
-    <!-- CONTAINER INTERFACE -->
     <div class="max-w-md mx-auto min-h-screen flex flex-col relative bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 pb-24 shadow-2xl overflow-hidden" x-data="globalReefRouter()">
         
-        <!-- ================= LANDING PAGE SCREEN ================= -->
-        <!-- Fixed: Changed from x-show to a standard native HTML ID for absolute click stability -->
         <div id="landingOverlay" class="absolute inset-0 z-[100] flex flex-col justify-between p-6 bg-slate-950 transition-all duration-500 ease-in-out">
             <div class="absolute top-1/4 -left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-[90px] bg-glow"></div>
             <div class="absolute bottom-1/4 -right-10 w-72 h-72 bg-rose-500/10 rounded-full blur-[90px] bg-glow" style="animation-delay: 4s"></div>
@@ -30,7 +25,6 @@
                 <span class="text-[10px] font-mono tracking-widest text-slate-500 uppercase bg-slate-900/80 px-2.5 py-1 rounded-full border border-slate-800">Node Cluster: UPM</span>
             </div>
 
-            <!-- Central Hero Segment -->
             <div class="space-y-8 relative z-10 my-auto text-center w-full">
                 <div class="flex items-center justify-center gap-4 max-w-xs mx-auto mb-2">
                     <div class="w-24 h-24 flex items-center justify-center">
@@ -55,7 +49,6 @@
                     </p>
                 </div>
 
-                <!-- Team Display Card -->
                 <div class="glass-premium rounded-2xl p-4 max-w-xs mx-auto shadow-xl">
                     <p class="text-[9px] text-cyan-500 font-mono tracking-widest uppercase">Engineered By</p>
                     <h2 class="text-base font-black tracking-wider text-slate-200 mt-0.5">TEAM REEF-STORER</h2>
@@ -63,9 +56,7 @@
                 </div>
             </div>
 
-            <!-- Interactive Gateway Trigger -->
             <div class="relative z-10 pb-6">
-                <!-- Fixed: Uses an un-blockable native onclick function to clear the screen instantly -->
                 <button onclick="dismissLandingScreen()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-black text-xs tracking-widest uppercase py-4 rounded-xl transition duration-300 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 active:scale-[0.98] cursor-pointer">
                     Initialize Cluster Connection
                 </button>
@@ -73,8 +64,6 @@
             </div>
         </div>
 
-
-        <!-- ================= MAIN CORE APP MODULE ================= -->
         <header class="p-4 flex justify-between items-center border-b border-slate-800 sticky top-0 bg-slate-950/95 backdrop-blur-md z-40">
             <div class="flex items-center gap-3">
                 <div class="flex items-center gap-2 bg-slate-900/60 px-2 py-1 rounded-xl border border-slate-800/80">
@@ -99,48 +88,48 @@
             </div>
         </header>
 
-        <!-- LIVE COMPONENT SLOT IFRAME ENGINE -->
         <div class="flex-1 w-full bg-slate-950">
             <iframe src="./insight-hub.html" class="w-full h-[calc(100vh-145px)] border-none" id="appViewport"></iframe>
         </div>
 
-        <!-- MULTI-PAGE MASTER DOCK INTERFACE -->
         <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/95 border-t border-slate-900 px-4 py-4 flex justify-around items-center z-40">
-            <button @click="navigate('./insight-hub.html')" class="flex flex-col items-center gap-1 text-xs" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
+            <button @click="navigate('./insight-hub.html')" class="flex flex-col items-center gap-1 text-xs transition duration-200" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 <span>Insights</span>
             </button>
             
-            <button @click="navigate('./fintech-vault.html')" class="flex flex-col items-center gap-1 text-xs" :class="activeTab === 'fintech' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
+            <button @click="navigate('./fintech-vault.html')" class="flex flex-col items-center gap-1 text-xs transition duration-200" :class="activeTab === 'fintech' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                 <span>RHB Vault</span>
             </button>
         </nav>
     </div>
 
-    <!-- NATIVE FALLBACK EVENT DRIVER -->
     <script>
         function dismissLandingScreen() {
             const overlay = document.getElementById('landingOverlay');
             if (overlay) {
                 overlay.style.opacity = '0';
-                setTimeout(() => {
-                    overlay.style.display = 'none';
-                }, 500); // Smooth fade transition drop out
+                setTimeout(() => overlay.style.display = 'none', 500);
             }
         }
 
         document.addEventListener('alpine:init', () => {
             Alpine.store('appData', {
                 reefScore: 72,
-                totalFunds: 142.80,
-                plasticMetric: 340,
-                updateState(deltaFunds, deltaPlastic, deltaScore) {
-                    this.totalFunds += deltaFunds;
-                    this.plasticMetric += deltaPlastic;
-                    if(this.reefScore + deltaScore <= 100) this.reefScore += deltaScore;
+                updateState(deltaScore) {
+                    if(this.reefScore + deltaScore <= 100) {
+                        this.reefScore += deltaScore;
+                    }
                 }
             });
+        });
+
+        // Foolproof cross-origin messaging tunnel gateway listener
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'REEF_SCORE_UPDATE') {
+                Alpine.store('appData').updateState(event.data.score);
+            }
         });
 
         function globalReefRouter() {
@@ -148,16 +137,11 @@
                 currentPage: './insight-hub.html',
                 activeTab: 'insights',
                 varsityNode: 'UPM_NODE.LOCAL',
-                
                 init() {
                     this.$watch('currentPage', value => {
-                        const iframe = document.getElementById('appViewport');
-                        if (iframe) {
-                            iframe.src = value;
-                        }
+                        document.getElementById('appViewport').src = value;
                     });
                 },
-                
                 navigate(page) {
                     this.currentPage = page;
                     this.activeTab = page.includes('insight') ? 'insights' : 'fintech';

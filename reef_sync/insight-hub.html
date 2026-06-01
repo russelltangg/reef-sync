@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Standardized Relative Root Link -->
-    <script src="framework.js"></script>
     <style>
         .glass-panel { background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); }
         ::-webkit-scrollbar { display: none; }
@@ -14,7 +11,6 @@
 </head>
 <body class="bg-transparent text-slate-100 p-4 space-y-5">
 
-    <!-- TEAM IDENTITY BANNER -->
     <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-blue-600 bg-gradient-to-r from-blue-950/20 to-transparent">
         <div class="flex justify-between items-center">
             <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest">Reef-Storer × RHB Impact Logic</h2>
@@ -23,69 +19,49 @@
         <p class="text-[11px] text-slate-400 mt-1">Transforming interview requirements gathered from environmental experts into scalable application features.</p>
     </div>
 
-    <!-- EXPERT INTERVIEW VIDEO COMPONENTS -->
     <div class="space-y-2">
         <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Expert Requirements Analysis</h3>
         <div class="grid grid-cols-2 gap-3">
-            <div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-28 relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent z-0"></div>
+            <div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-24 relative overflow-hidden">
                 <span class="text-[9px] font-bold text-blue-400 z-10 bg-blue-950/60 px-1.5 py-0.5 rounded w-max">Unresolved Issue</span>
                 <div class="z-10">
-                    <h4 class="text-[11px] font-bold text-white line-clamp-1">Reef Insulation Crisis</h4>
-                    <p class="text-[9px] text-slate-400">Context is broken on campus.</p>
+                    <h4 class="text-[11px] font-bold text-white">Reef Insulation</h4>
+                    <p class="text-[9px] text-slate-400">Context split on campus.</p>
                 </div>
             </div>
-            <div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-28 relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent z-0"></div>
-                <span class="text-[9px] font-bold text-teal-400 z-10 bg-teal-950/60 px-1.5 py-0.5 rounded w-max">Core Solution Wish</span>
+            <div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-24 relative overflow-hidden">
+                <span class="text-[9px] font-bold text-teal-400 z-10 bg-teal-950/60 px-1.5 py-0.5 rounded w-max">Core Solution</span>
                 <div class="z-10">
-                    <h4 class="text-[11px] font-bold text-white line-clamp-1">Automated Pipelines</h4>
-                    <p class="text-[9px] text-slate-400">Continuous micro-funding loop.</p>
+                    <h4 class="text-[11px] font-bold text-white">Automated Pipeline</h4>
+                    <p class="text-[9px] text-slate-400">Continuous funding loops.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- INSIGHT TERMINATER STRATEGY LOG -->
-    <div class="space-y-2.5" x-data="{
-        insights: [
-            { id: 1, role: 'Structural Diagnosis', desc: 'Students ignore marine issues because they lack a daily, low-friction channel to log environmental contributions.' },
-            { id: 2, role: 'System Execution Requirement', desc: 'Deploying transaction-linked micro-donations allows routine commercial purchases to directly sponsor coral nurseries.' }
-        ]
-    }">
-        <template x-for="item in insights" :key="item.id">
-            <div class="glass-panel rounded-xl p-3.5 space-y-1">
-                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider" x-text="item.role"></div>
-                <p class="text-xs text-slate-300 leading-relaxed" x-text="item.desc"></p>
-            </div>
-        </template>
-    </div>
-
-    <!-- TARGETED ACTION NODES -->
-    <div class="glass-panel rounded-xl p-4 space-y-3" x-data="{
-        sendPayload(score, plastic) {
-            if (typeof dispatchSystemUpdate === 'function') {
-                dispatchSystemUpdate(0, plastic, score);
-                alert('Ledger Node Update: Action synced with UPM cluster database.');
-            } else {
-                alert('Bridge Error: Parent linkage handshake pending.');
-            }
-        }
-    }">
+    <div class="glass-panel rounded-xl p-4 space-y-3">
         <div>
             <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wide">Campus Mitigation Node</h4>
             <p class="text-[10px] text-slate-500">Log physical metrics straight to the live platform ledger.</p>
         </div>
         <div class="p-3 bg-slate-950/40 rounded-xl border border-slate-900 flex justify-between items-center">
             <div>
-                <h5 class="text-xs font-bold text-slate-300">Deposit Local Marine Waste Plastic</h5>
+                <h5 class="text-xs font-bold text-slate-300">Deposit Marine Plastic Waste</h5>
                 <p class="text-[9px] text-blue-400">+5% Global System Score</p>
             </div>
-            <button @click="sendPayload(5, 4)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-[11px] px-3 py-1.5 rounded-lg transition duration-200">
+            <button onclick="sendLogMessage(5)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-[11px] px-3 py-1.5 rounded-lg transition duration-200 cursor-pointer">
                 Log Action
             </button>
         </div>
     </div>
 
+    <script>
+        function sendLogMessage(scoreValue) {
+            window.parent.postMessage({
+                type: 'REEF_SCORE_UPDATE',
+                score: scoreValue
+            }, '*');
+        }
+    </script>
 </body>
 </html>
