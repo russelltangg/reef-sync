@@ -3,82 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Reef_Sync Platform</title>
+    <title>Reef_Sync Platform v2.1</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <style>::-webkit-scrollbar { display: none; }</style>
+    <style>
+        .glass-panel { background: rgba(15, 23, 42, 0.55); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); }
+        .glass-premium { background: rgba(8, 15, 30, 0.7); backdrop-filter: blur(24px); border: 1px solid rgba(6, 182, 212, 0.2); }
+        ::-webkit-scrollbar { display: none; }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.15; transform: scale(1); } 50% { opacity: 0.35; transform: scale(1.1); } }
+        .bg-glow { animation: pulse-slow 8s infinite ease-in-out; }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen w-full flex justify-center items-start md:py-6" x-data="shellRouter()">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen w-full flex justify-center items-start md:py-6">
 
-    <div class="w-full max-w-md min-h-screen md:min-h-[85vh] bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 relative flex flex-col overflow-hidden shadow-2xl md:rounded-3xl border border-slate-900/50">
+    <div class="w-full max-w-md min-h-screen md:min-h-[88vh] bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 relative flex flex-col overflow-hidden shadow-2xl md:rounded-3xl border border-slate-900/60">
         
-        <header class="p-4 flex justify-between items-center border-b border-slate-900 bg-slate-950/90 backdrop-blur-md shrink-0 z-40">
-            <div class="flex items-center gap-2.5">
-                <div class="flex items-center gap-1.5 bg-slate-900/80 px-2 py-1 rounded-lg border border-slate-800">
-                    <img src="./image_0c1261.png" alt="UPM" class="h-5 w-auto object-contain">
-                    <img src="./image_0c0ee2.png" alt="RHB" class="h-4 w-auto object-contain">
+        <div id="landingPage" class="absolute inset-0 z-[100] w-full h-full bg-slate-950 flex flex-col justify-between p-6 overflow-y-auto">
+            <div class="absolute top-1/4 -left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-[100px] bg-glow"></div>
+            <div class="absolute bottom-1/4 -right-10 w-72 h-72 bg-rose-500/10 rounded-full blur-[100px] bg-glow" style="animation-delay: 4s"></div>
+            
+            <div class="flex justify-end pt-2 relative z-10 w-full shrink-0">
+                <span class="text-[9px] font-mono tracking-widest text-slate-500 uppercase bg-slate-900 px-2.5 py-1 rounded-full border border-slate-800">Node Cluster: UPM</span>
+            </div>
+
+            <div class="w-full space-y-7 relative z-10 text-center flex flex-col items-center justify-center my-auto py-4">
+                
+                <div class="flex items-center justify-center gap-6 max-w-xs mx-auto mb-2">
+                    <div class="w-24 h-24 flex items-center justify-center">
+                        <img src="./image_0c1261.png" alt="UPM Logo" class="max-w-full max-h-full object-contain drop-shadow-[0_4px_16px_rgba(255,255,255,0.12)]">
+                    </div>
+                    <div class="w-24 h-24 flex items-center justify-center">
+                        <img src="./image_0c0ee2.png" alt="RHB Logo" class="max-w-full max-h-full object-contain drop-shadow-[0_4px_16px_rgba(255,255,255,0.12)]">
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-xs font-black tracking-wider bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">REEF_SYNC</h1>
-                    <p class="text-[9px] text-slate-400">Team: <span class="font-bold text-slate-200">Reef-Storer</span></p>
+
+                <div class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/10 to-teal-500/10 px-4 py-1.5 rounded-full border border-cyan-500/20 shadow-inner">
+                    <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping"></span>
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-cyan-400 font-mono">Fintech × Conservation Protocol</span>
+                </div>
+                
+                <div class="space-y-3 px-1">
+                    <h1 class="text-4xl font-black tracking-tighter text-white">
+                        REEF_<span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400">SYNC</span>
+                    </h1>
+                    <p class="text-xs text-slate-400 max-w-xs mx-auto leading-relaxed">
+                        A decentralized cognitive ecosystem mapping routine varsity transactions into live coral preservation.
+                    </p>
+                </div>
+
+                <div class="glass-premium rounded-2xl p-4 w-full max-w-xs mx-auto shadow-2xl">
+                    <p class="text-[9px] text-cyan-500 font-mono tracking-widest uppercase">Engineered By</p>
+                    <h2 class="text-sm font-black tracking-wider text-slate-200 mt-0.5">TEAM REEF-STORER</h2>
+                    <div class="w-12 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto mt-2 rounded-full"></div>
                 </div>
             </div>
-            <div class="text-right flex flex-col items-end">
-                <div class="px-2 py-0.5 rounded-full text-[10px] font-black bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                    Score: <span x-text="reefScore + '%'"></span>
+
+            <div class="w-full relative z-10 pb-4 mt-auto shrink-0">
+                <button onclick="switchScreen('insights')" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-black text-xs tracking-widest uppercase py-4 rounded-xl transition-all duration-200 active:scale-[0.98] cursor-pointer shadow-xl shadow-cyan-500/20">
+                    Initialize Cluster Connection
+                </button>
+                <p class="text-[10px] text-center text-slate-600 mt-3 font-mono">Authorized for Hackathon Presentation 2026</p>
+            </div>
+        </div>
+
+
+        <header class="p-4 flex justify-between items-center border-b border-slate-900 bg-slate-950/95 backdrop-blur-md shrink-0 z-40">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 bg-slate-900/60 px-2 py-1 rounded-xl border border-slate-800/80">
+                    <img src="./image_0c1261.png" alt="UPM" class="h-6 w-auto object-contain">
+                    <img src="./image_0c0ee2.png" alt="RHB" class="h-5 w-auto object-contain">
                 </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <h1 class="text-sm font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-teal-400">REEF_SYNC</h1>
+                        <span class="text-[8px] px-1 bg-slate-800 rounded text-slate-400 font-mono">v2.1</span>
+                    </div>
+                    <p class="text-[9px] text-slate-400 font-medium">Team: <span class="text-slate-200 font-bold">Reef-Storer</span></p>
+                </div>
+            </div>
+            <div class="text-right flex flex-col items-end gap-0.5">
+                <div class="px-2 py-0.5 rounded-full text-[10px] font-black bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 tracking-wide">
+                    Score: <span id="masterScore">72%</span>
+                </div>
+                <span class="text-[8px] text-slate-500 font-medium font-mono">UPM_NODE.LOCAL</span>
             </div>
         </header>
 
-        <div class="flex-1 w-full bg-slate-950 relative z-10 overflow-hidden">
-            <iframe id="viewportFrame" src="./landing.html" class="w-full h-full border-none"></iframe>
-        </div>
 
-        <nav class="bg-slate-950 border-t border-slate-900 px-2 py-3.5 flex justify-around items-center shrink-0 z-40 md:rounded-b-3xl">
-            <button @click="changeTab('insights', './insight-hub.html')" class="flex flex-col items-center text-[11px] transition cursor-pointer" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
+        <main class="flex-1 w-full p-4 overflow-y-auto relative z-10 pb-8">
+
+            <div id="view-insights" class="app-screen space-y-5">
+                <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-blue-600 bg-gradient-to-r from-blue-950/20 to-transparent">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xs font-bold text-blue-400 uppercase tracking-widest">Reef-Storer × RHB Impact Logic</h2>
+                        <span class="text-[9px] text-slate-400 font-mono font-bold">UPM Pilot</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-1">Transforming academic metrics and data into transaction-linked micro-donations for live coral preservation.</p>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Expert Requirements Analysis</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-24 relative overflow-hidden">
+                            <span class="text-[9px] font-bold text-blue-400 z-10 bg-blue-950/60 px-1.5 py-0.5 rounded w-max">Unresolved Issue</span>
+                            <div class="z-10">
+                                <h4 class="text-[11px] font-bold text-white">Reef Insulation</h4>
+                                <p class="text-[9px] text-slate-400">Restoration funding gaps.</p>
+                            </div>
+                        </div>
+                        <div class="glass-panel p-3 rounded-xl flex flex-col justify-between h-24 relative overflow-hidden">
+                            <span class="text-[9px] font-bold text-teal-400 z-10 bg-teal-950/60 px-1.5 py-0.5 rounded w-max">Core Solution</span>
+                            <div class="z-10">
+                                <h4 class="text-[11px] font-bold text-white">Automated Pipeline</h4>
+                                <p class="text-[9px] text-slate-400">Micro-funding round-ups.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl p-4 space-y-3">
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wide">Campus Mitigation Node</h4>
+                        <p class="text-[10px] text-slate-500">Log local environmental actions to directly boost the ecosystem score ledger.</p>
+                    </div>
+                    <div class="p-3 bg-slate-950/40 rounded-xl border border-slate-900 flex justify-between items-center">
+                        <div>
+                            <h5 class="text-xs font-bold text-slate-300">Deposit Marine Plastic Waste</h5>
+                            <p class="text-[9px] text-blue-400">+5% Global System Score</p>
+                        </div>
+                        <button onclick="addScore(5)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-[11px] px-3 py-1.5 rounded-lg transition duration-200 cursor-pointer shadow-lg shadow-blue-600/20">
+                            Log Action
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-fintech" class="app-screen hidden space-y-5">
+                <div class="w-full h-40 bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-900 rounded-2xl p-5 relative overflow-hidden shadow-xl border border-white/10">
+                    <div class="flex flex-col justify-between h-full relative z-10">
+                        <div class="flex justify-between items-start">
+                            <div class="space-y-0.5">
+                                <span class="text-[11px] font-black tracking-widest text-white/90 block">RHB OCEAN HARMONI</span>
+                                <span class="text-[8px] px-1.5 py-0.5 bg-cyan-600 text-white font-bold tracking-wider rounded uppercase">UPM Edition</span>
+                            </div>
+                            <div class="w-7 h-7 bg-white rounded-md p-0.5 flex items-center justify-center shadow">
+                                <img src="./image_0c0ee2.png" alt="RHB" class="max-w-full max-h-full object-contain">
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[9px] text-cyan-300 uppercase tracking-widest font-bold">Micro-Donation Volume Generated</p>
+                            <h3 id="vaultDisplay" class="text-2xl font-black text-white tracking-tight">RM 24.50</h3>
+                        </div>
+                        <div class="flex justify-between items-center text-[10px] font-mono text-slate-400">
+                            <span>•••• •••• •••• 2026</span>
+                            <span class="text-[9px] text-white font-extrabold tracking-widest">VISA Debit-i</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl p-4 space-y-3">
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wide">Fintech Transaction Simulation Suite</h4>
+                        <p class="text-[10px] text-slate-500">Simulate everyday campus transactions to track how spare change automatically pours into active reef funds.</p>
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="addPayment(0.80, 3)" class="w-full bg-slate-950/40 hover:bg-slate-900 p-3 rounded-xl border border-slate-900 flex justify-between items-center transition duration-200 text-left cursor-pointer">
+                            <div>
+                                <h5 class="text-xs font-bold text-slate-300">UPM Central Cafeteria Meal</h5>
+                                <p class="text-[9px] text-slate-500">Spent: RM 6.20</p>
+                            </div>
+                            <span class="text-xs font-bold text-emerald-400">+ RM 0.80 Round-Up</span>
+                        </button>
+                        <button onclick="addPayment(0.50, 4)" class="w-full bg-slate-950/40 hover:bg-slate-900 p-3 rounded-xl border border-slate-900 flex justify-between items-center transition duration-200 text-left cursor-pointer">
+                            <div>
+                                <h5 class="text-xs font-bold text-slate-300">UPM Co-Op Textbook Purchase</h5>
+                                <p class="text-[9px] text-slate-500">Spent: RM 18.50</p>
+                            </div>
+                            <span class="text-xs font-bold text-emerald-400">+ RM 0.50 Round-Up</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-leaderboard" class="app-screen hidden space-y-5">
+                <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-amber-500 bg-gradient-to-r from-amber-950/20 to-transparent">
+                    <h2 class="text-xs font-bold text-amber-400 uppercase tracking-widest">National Varsity League</h2>
+                    <p class="text-[11px] text-slate-400 mt-1">Live tracking of Malaysian institutions converting baseline student spending into verified marine conservation points.</p>
+                </div>
+
+                <div class="glass-panel rounded-xl p-3 overflow-hidden">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-2 text-[10px] font-mono uppercase text-slate-500 tracking-wider">
+                        <span>Institution Node</span>
+                        <span>Restoration Score</span>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center p-2 bg-gradient-to-r from-cyan-950/40 to-slate-900/40 rounded-lg border border-cyan-500/20 animate-pulse">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-black text-cyan-400">01</span>
+                                <span class="text-xs font-bold text-white">Universiti Putra Malaysia (UPM)</span>
+                            </div>
+                            <span id="leaderboardScore" class="text-xs font-black text-cyan-400 font-mono">72%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-slate-900/40 rounded-lg text-slate-400">
+                            <div class="flex items-center gap-2">
+                                <span>02</span>
+                                <span class="text-xs font-medium">Universiti Malaya (UM)</span>
+                            </div>
+                            <span class="text-xs font-bold font-mono">68%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-slate-900/40 rounded-lg text-slate-400">
+                            <div class="flex items-center gap-2">
+                                <span>03</span>
+                                <span class="text-xs font-medium">Universiti Kebangsaan Malaysia (UKM)</span>
+                            </div>
+                            <span class="text-xs font-bold font-mono">54%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-mpp" class="app-screen hidden space-y-5">
+                <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-teal-500 bg-gradient-to-r from-teal-950/20 to-transparent">
+                    <h2 class="text-xs font-bold text-teal-400 uppercase tracking-widest">MPP Node Registry Portal</h2>
+                    <p class="text-[11px] text-slate-400 mt-1">Activate student representative infrastructure modules to map systemic micro-funding configurations.</p>
+                </div>
+
+                <form onsubmit="event.preventDefault(); alert('Ecosystem Node Initialized: Registry signature forwarded to campus leadership.'); textReset();" class="space-y-4 glass-panel p-4 rounded-xl border border-slate-900">
+                    <div>
+                        <label class="block text-[9px] uppercase font-mono tracking-wider text-slate-400 mb-1">University Branch Node</label>
+                        <input id="inputNode" type="text" placeholder="e.g. Universiti Putra Malaysia" class="w-full bg-slate-950 border border-slate-800 text-xs p-3 rounded-lg focus:outline-none focus:border-cyan-500 text-white" required>
+                    </div>
+                    <div>
+                        <label class="block text-[9px] uppercase font-mono tracking-wider text-slate-400 mb-1">Official MPP Identity Mail</label>
+                        <input id="inputMail" type="email" placeholder="mpp@upm.edu.my" class="w-full bg-slate-950 border border-slate-800 text-xs p-3 rounded-lg focus:outline-none focus:border-cyan-500 text-white" required>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-slate-950 font-extrabold text-xs tracking-wider uppercase py-3.5 rounded-lg transition duration-200 shadow-xl cursor-pointer">
+                        Register Node Asset
+                    </button>
+                </form>
+            </div>
+
+        </main>
+
+
+        <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950 border-t border-slate-900 px-2 py-4 flex justify-around items-center z-40 md:rounded-b-3xl">
+            <button id="nav-insights" onclick="switchScreen('insights')" class="flex flex-col items-center gap-1 text-[10px] font-bold text-cyan-400 scale-105 transition duration-150 cursor-pointer">
                 <span>Insights</span>
             </button>
-            <button @click="changeTab('fintech', './fintech-vault.html')" class="flex flex-col items-center text-[11px] transition cursor-pointer" :class="activeTab === 'fintech' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
-                <span>Vault</span>
+            <button id="nav-fintech" onclick="switchScreen('fintech')" class="flex flex-col items-center gap-1 text-[10px] text-slate-500 transition duration-150 cursor-pointer">
+                <span>RHB Vault</span>
             </button>
-            <button @click="changeTab('leaderboard', './leaderboard.html')" class="flex flex-col items-center text-[11px] transition cursor-pointer" :class="activeTab === 'leaderboard' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
+            <button id="nav-leaderboard" onclick="switchScreen('leaderboard')" class="flex flex-col items-center gap-1 text-[10px] text-slate-500 transition duration-150 cursor-pointer">
                 <span>League</span>
             </button>
-            <button @click="changeTab('mpp', './mpp-setup.html')" class="flex flex-col items-center text-[11px] transition cursor-pointer" :class="activeTab === 'mpp' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
+            <button id="nav-mpp" onclick="switchScreen('mpp')" class="flex flex-col items-center gap-1 text-[10px] text-slate-500 transition duration-150 cursor-pointer">
                 <span>MPP Setup</span>
             </button>
         </nav>
+
     </div>
 
     <script>
-        // Cross-Origin Message Channel Listener
-        window.addEventListener('message', (e) => {
-            if (e.data && e.data.type === 'UPDATE_SCORE') {
-                window.dispatchEvent(new CustomEvent('sync-score', { detail: e.data.value }));
-            }
-            if (e.data && e.data.type === 'ROUTE_APP') {
-                window.dispatchEvent(new CustomEvent('go-tab', { detail: e.data.target }));
-            }
-        });
+        // Reactive Memory Engine
+        let state = {
+            reefScore: 72,
+            donationBalance: 24.50
+        };
 
-        function shellRouter() {
-            return {
-                activeTab: 'landing',
-                reefScore: 72,
-                init() {
-                    window.addEventListener('sync-score', (e) => {
-                        if (this.reefScore + e.detail <= 100) this.reefScore += e.detail;
-                    });
-                    window.addEventListener('go-tab', (e) => {
-                        this.activeTab = e.detail;
-                        document.getElementById('viewportFrame').src = `./insight-hub.html`;
-                    });
-                },
-                changeTab(tabName, fileUrl) {
-                    this.activeTab = tabName;
-                    document.getElementById('viewportFrame').src = fileUrl;
-                }
+        // Hard un-blockable screen switcher logic
+        function switchScreen(screenId) {
+            // Dismiss Landing Overlay manually if it triggered the switch
+            const landingOverlay = document.getElementById('landingPage');
+            if (screenId !== 'landing' && landingOverlay.style.display !== 'none') {
+                landingOverlay.style.opacity = '0';
+                setTimeout(() => { landingOverlay.style.display = 'none'; }, 200);
             }
+
+            // Deactivate all screen displays
+            document.querySelectorAll('.app-screen').forEach(screen => {
+                screen.classList.add('hidden');
+            });
+
+            // Activate chosen screen element
+            document.getElementById(`view-${screenId}`).classList.remove('hidden');
+
+            // Reset navigation tab visual states
+            const navTabs = ['insights', 'fintech', 'leaderboard', 'mpp'];
+            navTabs.forEach(tab => {
+                const button = document.getElementById(`nav-${tab}`);
+                if (tab === screenId) {
+                    button.className = "flex flex-col items-center gap-1 text-[10px] font-bold text-cyan-400 scale-105 transition duration-150 cursor-pointer";
+                } else {
+                    button.className = "flex flex-col items-center gap-1 text-[10px] text-slate-500 transition duration-150 cursor-pointer";
+                }
+            });
+        }
+
+        // State Update Executioners
+        function addScore(amount) {
+            if (state.reefScore + amount <= 100) {
+                state.reefScore += amount;
+                document.getElementById('masterScore').innerText = state.reefScore + '%';
+                document.getElementById('gridScore').innerText = state.reefScore + '%';
+                document.getElementById('leaderboardScore').innerText = state.reefScore + '%';
+            }
+            alert(`Ecosystem Action Saved: +${amount}% Added to UPM Ledger.`);
+        }
+
+        function addPayment(change, scoreAmt) {
+            state.donationBalance += change;
+            document.getElementById('vaultDisplay').innerText = 'RM ' + state.donationBalance.toFixed(2);
+            
+            if (state.reefScore + scoreAmt <= 100) {
+                state.reefScore += scoreAmt;
+                document.getElementById('masterScore').innerText = state.reefScore + '%';
+                document.getElementById('leaderboardScore').innerText = state.reefScore + '%';
+            }
+            alert(`RHB Gateway: Round-up spare change of RM ${change.toFixed(2)} funneled to active coral nurseries.`);
+        }
+
+        function textReset() {
+            document.getElementById('inputNode').value = '';
+            document.getElementById('inputMail').value = '';
         }
     </script>
 </body>
