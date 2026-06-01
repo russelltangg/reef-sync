@@ -17,27 +17,23 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased" x-data="globalReefRouter()">
 
-    <!-- CONTAINER INTERFACE -->
     <div class="max-w-md mx-auto min-h-screen flex flex-col relative bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 pb-24 shadow-2xl overflow-hidden">
         
-        <!-- ================= LANDING PAGE SCREEN ================= -->
-        <div x-show="showLanding" class="absolute inset-0 z-50 flex flex-col justify-between p-6 bg-slate-950/95 transition-all duration-700 ease-in-out">
+        <div x-show="showLanding" class="absolute inset-0 z-[100] flex flex-col justify-between p-6 bg-slate-950/98 transition-all duration-700 ease-in-out">
             <div class="absolute top-1/4 -left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-[90px] bg-glow"></div>
             <div class="absolute bottom-1/4 -right-10 w-72 h-72 bg-rose-500/10 rounded-full blur-[90px] bg-glow" style="animation-delay: 4s"></div>
             
-            <div class="flex justify-between items-center relative z-10 pt-4">
-                <div class="flex items-center -space-x-1.5">
-                    <div class="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center shadow-md border border-white/20">
-                        <img src="image_0c1261.png" alt="UPM Logo" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center shadow-md border border-slate-200">
-                        <img src="image_0c0ee2.png" alt="RHB Logo" class="max-w-full max-h-full object-contain">
-                    </div>
-                </div>
+            <div class="flex justify-end items-center relative z-10 pt-4">
                 <span class="text-[10px] font-mono tracking-widest text-slate-500 uppercase bg-slate-900/80 px-2.5 py-1 rounded-full border border-slate-800">Node Cluster: UPM</span>
             </div>
 
-            <div class="space-y-6 relative z-10 my-auto text-center">
+            <div class="space-y-8 relative z-10 my-auto text-center">
+                
+                <div class="flex items-center justify-center gap-6 max-w-xs mx-auto mb-4">
+                    <img src="./image_0c1261.png" alt="UPM Logo" class="h-16 w-auto object-contain drop-shadow-[0_4px_12px_rgba(255,255,255,0.15)]">
+                    <img src="./image_0c0ee2.png" alt="RHB Logo" class="h-14 w-auto object-contain drop-shadow-[0_4px_12px_rgba(255,255,255,0.15)]">
+                </div>
+
                 <div class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/10 to-teal-500/10 px-4 py-1.5 rounded-full border border-cyan-500/20 shadow-inner">
                     <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping"></span>
                     <span class="text-[10px] font-bold tracking-widest uppercase text-cyan-400 font-mono">Fintech × Conservation Protocol</span>
@@ -60,23 +56,19 @@
             </div>
 
             <div class="relative z-10 pb-6">
-                <button @click="showLanding = false" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-black text-xs tracking-widest uppercase py-4 rounded-xl transition duration-300 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 active:scale-[0.98]">
+                <button @click="showLanding = false" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-black text-xs tracking-widest uppercase py-4 rounded-xl transition duration-300 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 active:scale-[0.98] cursor-pointer">
                     Initialize Cluster Connection
                 </button>
                 <p class="text-[10px] text-center text-slate-600 mt-3 font-mono">Authorized for Hackathon Sandbox Presentation 2026</p>
             </div>
         </div>
 
-        <!-- ================= MAIN CORE APP MODULE ================= -->
+
         <header class="p-4 flex justify-between items-center border-b border-slate-800 sticky top-0 bg-slate-950/95 backdrop-blur-md z-40">
-            <div class="flex items-center gap-2.5">
-                <div class="flex items-center -space-x-2">
-                    <div class="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center shadow-md relative z-20">
-                        <img src="image_0c1261.png" alt="UPM Logo" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-8 h-8 bg-white rounded-lg p-1 flex items-center justify-center shadow-md relative z-10 border border-slate-100">
-                        <img src="image_0c0ee2.png" alt="RHB Logo" class="max-w-full max-h-full object-contain">
-                    </div>
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 bg-slate-900/60 px-2 py-1 rounded-xl border border-slate-800/80">
+                    <img src="./image_0c1261.png" alt="UPM" class="h-6 w-auto object-contain">
+                    <img src="./image_0c0ee2.png" alt="RHB" class="h-5 w-auto object-contain">
                 </div>
                 
                 <div>
@@ -96,20 +88,17 @@
             </div>
         </header>
 
-        <!-- LIVE COMPONENT SLOT IFRAME ENGINE -->
-        <main class="flex-1 w-full">
-            <!-- Added id="appViewport" and a static initial src pointing directly to your root file inside GitHub -->
-            <iframe src="insight-hub.html" class="w-full h-[calc(100vh-145px)] border-none" id="appViewport"></iframe>
-        </main>
+        <div class="flex-1 w-full bg-slate-950">
+            <iframe src="./insight-hub.html" class="w-full h-[calc(100vh-145px)] border-none" id="appViewport"></iframe>
+        </div>
 
-        <!-- MULTI-PAGE MASTER DOCK INTERFACE -->
         <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/95 border-t border-slate-900 px-4 py-4 flex justify-around items-center z-40">
-            <button @click="navigate('insight-hub.html')" class="flex flex-col items-center gap-1 text-xs" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
+            <button @click="navigate('./insight-hub.html')" class="flex flex-col items-center gap-1 text-xs" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 <span>Insights</span>
             </button>
             
-            <button @click="navigate('fintech-vault.html')" class="flex flex-col items-center gap-1 text-xs" :class="activeTab === 'fintech' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
+            <button @click="navigate('./fintech-vault.html')" class="flex flex-col items-center gap-1 text-xs" :class="activeTab === 'fintech' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                 <span>RHB Vault</span>
             </button>
@@ -133,16 +122,15 @@
         function globalReefRouter() {
             return {
                 showLanding: true,
-                currentPage: 'insight-hub.html',
+                currentPage: './insight-hub.html',
                 activeTab: 'insights',
                 varsityNode: 'UPM_NODE.LOCAL',
                 
-                // Initialize the watcher hook when component mounts
                 init() {
                     this.$watch('currentPage', value => {
                         const iframe = document.getElementById('appViewport');
                         if (iframe) {
-                            iframe.src = value; // Forcefully injects the page value straight into DOM window context
+                            iframe.src = value;
                         }
                     });
                 },
