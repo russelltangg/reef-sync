@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="framework.js"></script>
+    <style>
+        .glass-panel { background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-transparent text-slate-100 p-4 space-y-5" x-data="{
+    runningTotal: 24.50,
+    triggerMockPayment(cost) {
+        let nextUnit = Math.ceil(cost);
+        let spareChange = nextUnit - cost;
+        if (spareChange === 0) spareChange = 1.00;
+        
+        this.runningTotal += spareChange;
+        dispatchSystemUpdate(spareChange, 0, 3);
+        alert('RHB API Gateway: Transaction processed. Micro-donation fraction allocated to coral fund.');
+    }
+}">
+
+    <div class="w-full h-44 bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-900 rounded-2xl p-5 relative overflow-hidden shadow-xl border border-white/10">
+        <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        
+        <div class="flex flex-col justify-between h-full relative z-10">
+            <div class="flex justify-between items-start">
+                <div class="space-y-0.5">
+                    <span class="text-[11px] font-black tracking-widest text-white/90 block">RHB OCEAN HARMONI</span>
+                    <span class="text-[8px] px-1.5 py-0.5 bg-cyan-600 text-white font-bold tracking-wider rounded uppercase">UPM Edition</span>
+                </div>
+                <div class="w-7 h-7 bg-white rounded-md p-0.5 flex items-center justify-center shadow">
+                    <img src="image_0c0ee2.png" alt="RHB Graphic Icon" class="max-w-full max-h-full object-contain">
+                </div>
+            </div>
+            
+            <div>
+                <p class="text-[9px] text-cyan-300 uppercase tracking-widest font-bold">Micro-Donation Volume Generated</p>
+                <h3 class="text-2xl font-black text-white tracking-tight" x-text="'RM ' + runningTotal.toFixed(2)"></h3>
+            </div>
+            
+            <div class="flex justify-between items-center text-[10px] font-mono text-slate-400">
+                <span>•••• •••• •••• 2026</span>
+                <span class="text-[9px] text-white font-extrabold tracking-widest">VISA Debit-i</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-panel rounded-xl p-4 space-y-3">
+        <div>
+            <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wide">Fintech Transaction Simulation Suite</h4>
+            <p class="text-[10px] text-slate-500">Simulate everyday campus spending to trace how spare change is automatically funneled into active reef restoration.</p>
+        </div>
+
+        <div class="space-y-2">
+            <button @click="triggerMockPayment(6.20)" class="w-full bg-slate-950/40 hover:bg-slate-950 p-3 rounded-xl border border-slate-900 flex justify-between items-center transition duration-200">
+                <div class="text-left">
+                    <h5 class="text-xs font-bold text-slate-300">UPM Central Cafeteria Meal</h5>
+                    <p class="text-[9px] text-slate-500">Spent: RM 6.20</p>
+                </div>
+                <span class="text-xs font-bold text-emerald-400">+ RM 0.80 Round-Up</span>
+            </button>
+            
+            <button @click="triggerMockPayment(18.50)" class="w-full bg-slate-950/40 hover:bg-slate-950 p-3 rounded-xl border border-slate-900 flex justify-between items-center transition duration-200">
+                <div class="text-left">
+                    <h5 class="text-xs font-bold text-slate-300">UPM Co-Op Textbook Purchase</h5>
+                    <p class="text-[9px] text-slate-500">Spent: RM 18.50</p>
+                </div>
+                <span class="text-xs font-bold text-emerald-400">+ RM 0.50 Round-Up</span>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
