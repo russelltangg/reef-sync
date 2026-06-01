@@ -14,26 +14,26 @@
         .bg-glow { animation: pulse-slow 8s infinite ease-in-out; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col items-center justify-start md:py-6" x-data="globalReefRouter()">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col items-center justify-start md:py-8">
 
-    <div class="w-full md:max-w-md min-h-screen md:min-h-0 flex flex-col relative bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 pb-24 shadow-2xl md:rounded-3xl border border-slate-900 overflow-x-hidden">
+    <div class="w-full md:max-w-md min-h-screen md:min-h-[85vh] flex flex-col relative bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 pb-24 shadow-2xl md:rounded-3xl border border-slate-900/50 overflow-hidden">
         
-        <div x-show="showLanding" class="absolute inset-0 z-[100] w-full min-h-screen md:min-h-full flex flex-col justify-between p-6 bg-slate-950 transition-all duration-500 ease-in-out overflow-y-auto">
+        <div x-show="showLanding" class="absolute inset-0 z-[100] w-full h-full bg-slate-950 flex flex-col p-6 overflow-y-auto">
             <div class="absolute top-1/4 -left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-[90px] bg-glow"></div>
             <div class="absolute bottom-1/4 -right-10 w-72 h-72 bg-rose-500/10 rounded-full blur-[90px] bg-glow" style="animation-delay: 4s"></div>
             
-            <div class="flex justify-end items-center relative z-10 pt-4 w-full shrink-0">
+            <div class="flex justify-end items-center relative z-10 w-full shrink-0">
                 <span class="text-[10px] font-mono tracking-widest text-slate-500 uppercase bg-slate-900/80 px-2.5 py-1 rounded-full border border-slate-800">Node Cluster: UPM</span>
             </div>
 
-            <div class="w-full space-y-6 relative z-10 py-8 text-center flex flex-col items-center justify-center my-auto">
+            <div class="w-full space-y-6 relative z-10 text-center flex flex-col items-center justify-center my-auto py-4">
                 
                 <div class="flex items-center justify-center gap-6 max-w-xs mx-auto">
-                    <div class="w-24 h-24 flex items-center justify-center">
-                        <img src="./image_0c1261.png" alt="UPM Logo" class="max-w-full max-h-full object-contain drop-shadow-[0_4px_12px_rgba(255,255,255,0.1)]">
+                    <div class="w-20 h-20 flex items-center justify-center">
+                        <img src="./image_0c1261.png" alt="UPM Logo" class="max-w-full max-h-full object-contain drop-shadow-[0_4px_12_rgba(255,255,255,0.1)]">
                     </div>
-                    <div class="w-24 h-24 flex items-center justify-center">
-                        <img src="./image_0c0ee2.png" alt="RHB Logo" class="max-w-full max-h-full object-contain drop-shadow-[0_4px_12px_rgba(255,255,255,0.1)]">
+                    <div class="w-20 h-20 flex items-center justify-center">
+                        <img src="./image_0c0ee2.png" alt="RHB Logo" class="max-w-full max-h-full object-contain drop-shadow-[0_4px_12_rgba(255,255,255,0.1)]">
                     </div>
                 </div>
 
@@ -42,27 +42,27 @@
                     <span class="text-[10px] font-bold tracking-widest uppercase text-cyan-400 font-mono">Fintech × Conservation Protocol</span>
                 </div>
                 
-                <div class="space-y-3 px-2">
+                <div class="space-y-2 px-1">
                     <h1 class="text-4xl font-black tracking-tighter text-white">
                         REEF_<span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400">SYNC</span>
                     </h1>
-                    <p class="text-xs text-slate-400 max-w-xs mx-auto leading-relaxed">
+                    <p class="text-[11px] text-slate-400 max-w-xs mx-auto leading-relaxed">
                         A decentralized cognitive ecosystem mapping routine varsity transactions into live coral preservation.
                     </p>
                 </div>
 
-                <div class="glass-premium rounded-2xl p-4 w-full max-w-xs mx-auto shadow-xl shrink-0">
+                <div class="glass-premium rounded-2xl p-4 w-full max-w-xs mx-auto shadow-xl">
                     <p class="text-[9px] text-cyan-500 font-mono tracking-widest uppercase">Engineered By</p>
-                    <h2 class="text-base font-black tracking-wider text-slate-200 mt-0.5">TEAM REEF-STORER</h2>
+                    <h2 class="text-sm font-black tracking-wider text-slate-200 mt-0.5">TEAM REEF-STORER</h2>
                     <div class="w-12 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 mx-auto mt-2 rounded-full"></div>
                 </div>
             </div>
 
-            <div class="w-full relative z-10 pb-4 shrink-0 mt-auto">
+            <div class="w-full relative z-10 pt-2 pb-2 mt-auto shrink-0">
                 <button @click="showLanding = false" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-black text-xs tracking-widest uppercase py-4 rounded-xl transition duration-300 shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/20 active:scale-[0.98] cursor-pointer">
                     Initialize Cluster Connection
                 </button>
-                <p class="text-[10px] text-center text-slate-600 mt-3 font-mono">Authorized for Hackathon Sandbox Presentation 2026</p>
+                <p class="text-[9px] text-center text-slate-600 mt-2.5 font-mono">Authorized for Hackathon Sandbox Presentation 2026</p>
             </div>
         </div>
 
@@ -224,7 +224,7 @@
 
         <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-950/95 border-t border-slate-900 px-4 py-4 flex justify-around items-center z-40 md:rounded-b-3xl">
             <button @click="activeTab = 'insights'" class="flex flex-col items-center gap-1 text-xs transition duration-200 cursor-pointer" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1.0 01.707.293l5.414 5.414a1 1.0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 <span>Insights</span>
             </button>
             
