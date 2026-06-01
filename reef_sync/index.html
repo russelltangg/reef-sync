@@ -6,53 +6,12 @@
     <title>Reef_Sync Platform v2.1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <style>
-        .glass-panel { background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .glass-premium { background: rgba(8, 15, 30, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(6, 182, 212, 0.15); }
-        ::-webkit-scrollbar { display: none; }
-        @keyframes pulse-slow { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.15); } }
-        .bg-glow { animation: pulse-slow 8s infinite ease-in-out; }
-    </style>
+    <style>::-webkit-scrollbar { display: none; }</style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen w-full flex justify-center items-start md:py-6" x-data="shellRouter()">
 
     <div class="w-full max-w-md min-h-screen md:min-h-[88vh] bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 relative flex flex-col overflow-hidden shadow-2xl md:rounded-3xl border border-slate-900/50">
         
-        <div id="landingOverlay" class="absolute inset-0 z-[100] w-full h-full bg-slate-950 flex flex-col justify-between p-6 overflow-y-auto transition-all duration-300 ease-in-out">
-            <div class="absolute top-1/4 -left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-[90px] bg-glow"></div>
-            <div class="absolute bottom-1/4 -right-10 w-72 h-72 bg-rose-500/10 rounded-full blur-[90px] bg-glow" style="animation-delay: 4s"></div>
-            
-            <div class="flex justify-end pt-2 relative z-10">
-                <span class="text-[9px] font-mono tracking-widest text-slate-500 bg-slate-900 px-2.5 py-1 rounded-full border border-slate-800">Node Cluster: UPM</span>
-            </div>
-
-            <div class="space-y-6 relative z-10 my-auto text-center flex flex-col items-center">
-                <div class="flex items-center justify-center gap-4 mb-2">
-                    <img src="./image_0c1261.png" alt="UPM" class="w-20 h-20 object-contain">
-                    <img src="./image_0c0ee2.png" alt="RHB" class="w-20 h-20 object-contain">
-                </div>
-                <div class="inline-flex items-center gap-2 bg-cyan-500/10 px-4 py-1.5 rounded-full border border-cyan-500/20">
-                    <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping"></span>
-                    <span class="text-[10px] font-bold tracking-widest uppercase text-cyan-400 font-mono">Fintech × Conservation Protocol</span>
-                </div>
-                <div class="space-y-2">
-                    <h1 class="text-4xl font-black tracking-tighter text-white">REEF_<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">SYNC</span></h1>
-                    <p class="text-xs text-slate-400 max-w-xs mx-auto leading-relaxed">A decentralized cognitive ecosystem mapping varsity transactions into live coral preservation.</p>
-                </div>
-                <div class="glass-premium rounded-2xl p-4 w-full max-w-xs shadow-xl">
-                    <p class="text-[9px] text-cyan-500 font-mono tracking-widest uppercase">Engineered By</p>
-                    <h2 class="text-sm font-black text-slate-200 mt-0.5">TEAM REEF-STORER</h2>
-                </div>
-            </div>
-
-            <div class="relative z-10 pb-4 mt-auto">
-                <button onclick="dismissLandingScreen()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-slate-950 font-black text-xs tracking-widest uppercase py-4 rounded-xl active:scale-[0.98] transition cursor-pointer shadow-xl shadow-cyan-500/20">
-                    Initialize Cluster Connection
-                </button>
-                <p class="text-[9px] text-center text-slate-600 mt-2 font-mono">Authorized for Hackathon Presentation 2026</p>
-            </div>
-        </div>
-
         <header class="p-4 flex justify-between items-center border-b border-slate-900 bg-slate-950/90 backdrop-blur-md shrink-0 z-40">
             <div class="flex items-center gap-2.5">
                 <div class="flex items-center gap-1.5 bg-slate-900/80 px-2 py-1 rounded-lg border border-slate-800">
@@ -65,122 +24,59 @@
                 </div>
             </div>
             <div class="text-right flex flex-col items-end">
-                <div class="px-2 py-0.5 rounded-full text-[9px] font-black bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                <div class="px-2 py-0.5 rounded-full text-[10px] font-black bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
                     Score: <span x-text="reefScore + '%'"></span>
                 </div>
             </div>
         </header>
 
-        <main class="flex-1 w-full p-4 overflow-y-auto space-y-4 relative z-10">
-            
-            <div x-show="activeTab === 'insights'" class="space-y-4">
-                <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-blue-600 bg-gradient-to-r from-blue-950/20 to-transparent">
-                    <h2 class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Reef-Storer × RHB Impact Logic</h2>
-                    <p class="text-[11px] text-slate-400 mt-1">Converting strategic environmental metrics directly into micro-donation streams.</p>
-                </div>
-                <div class="p-3.5 bg-slate-900/40 rounded-xl border border-slate-900 flex justify-between items-center">
-                    <div>
-                        <h5 class="text-[11px] font-bold text-slate-300">Deposit Plastic Waste</h5>
-                        <p class="text-[9px] text-blue-400">+5% Score Increase</p>
-                    </div>
-                    <button @click="triggerScore(5)" class="bg-blue-600 text-white font-bold text-[10px] px-3 py-1.5 rounded-lg cursor-pointer">Log Action</button>
-                </div>
-            </div>
+        <div class="flex-1 w-full bg-slate-950 relative z-10 overflow-hidden">
+            <iframe id="viewportFrame" src="./landing.html" class="w-full h-full border-none"></iframe>
+        </div>
 
-            <div x-show="activeTab === 'fintech'" class="space-y-4">
-                <div class="w-full h-36 bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950 rounded-xl p-4 flex flex-col justify-between border border-slate-800 shadow-xl">
-                    <div>
-                        <span class="text-[10px] font-black tracking-widest text-slate-200 block">RHB OCEAN HARMONI</span>
-                    </div>
-                    <div>
-                        <p class="text-[8px] text-cyan-400 font-bold tracking-widest uppercase">Micro-Donation Value</p>
-                        <h3 class="text-xl font-black text-white" x-text="'RM ' + donationTotal.toFixed(2)"></h3>
-                    </div>
-                </div>
-                <button @click="triggerPayment(0.80, 3)" class="w-full bg-slate-900/40 p-3 rounded-lg border border-slate-900 flex justify-between items-center text-left cursor-pointer">
-                    <div>
-                        <h5 class="text-[11px] font-bold text-slate-300">Cafeteria Meal Round-Up</h5>
-                    </div>
-                    <span class="text-[10px] font-bold text-emerald-400">+RM 0.80</span>
-                </button>
-            </div>
-
-            <div x-show="activeTab === 'leaderboard'" class="space-y-4">
-                <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-amber-500">
-                    <h2 class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">National Varsity League</h2>
-                </div>
-                <div class="glass-panel rounded-xl p-3 space-y-2">
-                    <div class="flex justify-between items-center p-2 bg-gradient-to-r from-cyan-950/40 to-slate-900/40 rounded-lg border border-cyan-500/20">
-                        <span class="text-xs font-bold">01 Universiti Putra Malaysia (UPM)</span>
-                        <span class="text-xs font-black text-cyan-400" x-text="reefScore + '%'"></span>
-                    </div>
-                    <div class="flex justify-between items-center p-2 bg-slate-900/40 text-slate-400 rounded-lg">
-                        <span class="text-xs">02 Universiti Malaya (UM)</span>
-                        <span class="text-xs font-bold">68%</span>
-                    </div>
-                </div>
-            </div>
-
-            <div x-show="activeTab === 'mpp'" class="space-y-4">
-                <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-teal-500">
-                    <h2 class="text-[10px] font-bold text-teal-400 uppercase tracking-widest">MPP Node Registry</h2>
-                    <p class="text-[11px] text-slate-400 mt-1">Register your university's Student Representative Council to activate campus micro-donation tracking.</p>
-                </div>
-                <form @submit.prevent="alert('Ecosystem Node Initialized: Verification token forwarded to campus leadership.')" class="space-y-3 glass-panel p-4 rounded-xl border border-slate-900">
-                    <div>
-                        <label class="block text-[9px] uppercase font-mono tracking-wider text-slate-400 mb-1">University Name</label>
-                        <input type="text" placeholder="e.g. Universiti Putra Malaysia" class="w-full bg-slate-950 border border-slate-800 text-xs p-2.5 rounded-lg focus:outline-none focus:border-cyan-500 text-white" required>
-                    </div>
-                    <div>
-                        <label class="block text-[9px] uppercase font-mono tracking-wider text-slate-400 mb-1">Official MPP Email Contact</label>
-                        <input type="email" placeholder="mpp@upm.edu.my" class="w-full bg-slate-950 border border-slate-800 text-xs p-2.5 rounded-lg focus:outline-none focus:border-cyan-500 text-white" required>
-                    </div>
-                    <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 font-bold text-xs tracking-wider uppercase py-2.5 rounded-lg shadow-lg">
-                        Register Node Asset
-                    </button>
-                </form>
-            </div>
-
-        </main>
-
-        <nav class="bg-slate-950 border-t border-slate-900 px-2 py-3.5 flex justify-around items-center shrink-0 z-40 md:rounded-b-3xl">
-            <button @click="activeTab = 'insights'" class="flex flex-col items-center gap-1 text-[9px] transition cursor-pointer" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
+        <nav class="bg-slate-950 border-t border-slate-900 px-1 py-3.5 flex justify-around items-center shrink-0 z-40 md:rounded-b-3xl">
+            <button @click="changeTab('insights', './insight-hub.html')" class="flex flex-col items-center gap-1 text-[10px] transition cursor-pointer" :class="activeTab === 'insights' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
                 <span>Insights</span>
             </button>
-            <button @click="activeTab = 'fintech'" class="flex flex-col items-center gap-1 text-[9px] transition cursor-pointer" :class="activeTab === 'fintech' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
+            <button @click="changeTab('fintech', './fintech-vault.html')" class="flex flex-col items-center gap-1 text-[10px] transition cursor-pointer" :class="activeTab === 'fintech' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
                 <span>Vault</span>
             </button>
-            <button @click="activeTab = 'leaderboard'" class="flex flex-col items-center gap-1 text-[9px] transition cursor-pointer" :class="activeTab === 'leaderboard' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
-                <span>Leaderboard</span>
+            <button @click="changeTab('leaderboard', './leaderboard.html')" class="flex flex-col items-center gap-1 text-[10px] transition cursor-pointer" :class="activeTab === 'leaderboard' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
+                <span>League</span>
             </button>
-            <button @click="activeTab = 'mpp'" class="flex flex-col items-center gap-1 text-[9px] transition cursor-pointer" :class="activeTab === 'mpp' ? 'text-cyan-400 font-bold scale-105' : 'text-slate-500'">
+            <button @click="changeTab('mpp', './mpp-setup.html')" class="flex flex-col items-center gap-1 text-[10px] transition cursor-pointer" :class="activeTab === 'mpp' ? 'text-cyan-400 font-bold' : 'text-slate-500'">
                 <span>MPP Setup</span>
             </button>
         </nav>
     </div>
 
     <script>
-        // Separate native click implementation to break free from Alpine latency locks entirely
-        function dismissLandingScreen() {
-            const overlay = document.getElementById('landingOverlay');
-            if (overlay) {
-                overlay.style.opacity = '0';
-                setTimeout(() => { overlay.style.display = 'none'; }, 300);
+        // Catch value payloads coming out of subpages using the system messaging channel
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'UPDATE_SCORE') {
+                window.dispatchEvent(new CustomEvent('sync-score', { detail: e.data.value }));
             }
-        }
+            if (e.data && e.data.type === 'ROUTE_APP') {
+                window.dispatchEvent(new CustomEvent('go-tab', { detail: e.data.target }));
+            }
+        });
 
         function shellRouter() {
             return {
-                showLanding: true,
-                activeTab: 'insights',
+                activeTab: 'landing',
                 reefScore: 72,
-                donationTotal: 24.50,
-                triggerScore(val) {
-                    if (this.reefScore + val <= 100) this.reefScore += val;
+                init() {
+                    window.addEventListener('sync-score', (e) => {
+                        if (this.reefScore + e.detail <= 100) this.reefScore += e.detail;
+                    });
+                    window.addEventListener('go-tab', (e) => {
+                        this.activeTab = e.detail;
+                        document.getElementById('viewportFrame').src = `./insight-hub.html`;
+                    });
                 },
-                triggerPayment(change, val) {
-                    this.donationTotal += change;
-                    if (this.reefScore + val <= 100) this.reefScore += val;
+                changeTab(tabName, fileUrl) {
+                    this.activeTab = tabName;
+                    document.getElementById('viewportFrame').src = fileUrl;
                 }
             }
         }

@@ -8,23 +8,9 @@
 </head>
 <body class="bg-slate-950 text-slate-100 p-4 space-y-4 overflow-y-auto selection:bg-transparent">
 
-    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-900/80 border-l-4 border-l-blue-500">
+    <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-900 border-l-4 border-l-blue-500">
         <h2 class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Reef-Storer × RHB Impact Logic</h2>
         <p class="text-[11px] text-slate-400 mt-1">Converting strategic environmental metrics directly into micro-donation streams.</p>
-    </div>
-
-    <div class="space-y-2">
-        <h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Requirements Analysis</h3>
-        <div class="grid grid-cols-2 gap-2.5">
-            <div class="bg-slate-900/30 p-3 rounded-xl border border-slate-900 flex flex-col justify-between h-20">
-                <span class="text-[8px] font-bold text-blue-400 bg-blue-950/50 px-1.5 py-0.5 rounded w-max">Issue</span>
-                <h4 class="text-[11px] font-bold text-slate-200">Reef Insulation</h4>
-            </div>
-            <div class="bg-slate-900/30 p-3 rounded-xl border border-slate-900 flex flex-col justify-between h-20">
-                <span class="text-[8px] font-bold text-teal-400 bg-teal-950/50 px-1.5 py-0.5 rounded w-max">Solution</span>
-                <h4 class="text-[11px] font-bold text-slate-200">Micro Pipelines</h4>
-            </div>
-        </div>
     </div>
 
     <div class="bg-slate-900/40 rounded-xl p-3.5 border border-slate-900 space-y-3">
@@ -37,7 +23,7 @@
                 <h5 class="text-[11px] font-bold text-slate-300">Deposit Plastic</h5>
                 <p class="text-[9px] text-blue-400">+5% Score Increase</p>
             </div>
-            <button onclick="relayAction(5)" class="bg-blue-600 active:bg-blue-500 text-white font-bold text-[10px] px-3 py-1.5 rounded-lg shadow transition cursor-pointer">
+            <button onclick="relayAction(5)" class="bg-blue-600 active:bg-blue-500 text-white font-bold text-[10px] px-3 py-1.5 rounded-lg shadow cursor-pointer">
                 Log Action
             </button>
         </div>
@@ -45,7 +31,7 @@
 
     <script>
         function relayAction(val) {
-            window.parent.postMessage({ type: 'INCREMENT_SCORE', value: val }, '*');
+            window.parent.postMessage({ type: 'UPDATE_SCORE', value: val }, '*');
         }
     </script>
 </body>
